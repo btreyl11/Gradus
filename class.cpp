@@ -23,9 +23,9 @@ string Class::name()const
 string Class::grades()const
 {
 	ostringstream sout;
-	for (map<string, vector<double> >::const_iterator it = mGrades.begin(); it != mGrades.end(); it++){
+	for (map<string, vector<Grade> >::const_iterator it = mGrades.begin(); it != mGrades.end(); it++){
 		sout<<it->first;
-		for(vector<double>::const_iterator it2 = it->second.begin(); it2 != it->second.end(); it2++){
+		for(vector<Grade>::const_iterator it2 = it->second.begin(); it2 != it->second.end(); it2++){
 			sout<< *it2;
 		}
 		sout<<endl;
@@ -34,6 +34,7 @@ string Class::grades()const
 }
 double Class::average()const
 {
+	//Learn the algorithm to find class averages
 	return mAverage;
 }
 string Class::weights()
@@ -52,7 +53,7 @@ void Class::setName(const string name)
 {
 	mName = name;
 }
-void Class::addGrade(const string type, const double grade)
+void Class::addGrade(const string type, Grade grade)
 {
 	mGrades[type].push_back(grade);
 }
@@ -66,7 +67,7 @@ void Class::addWeight(const string type, const int weight)
 void  Class::setWeight(const string type, const int weight){
 	mWeights[type] = weight;
 }
-void Class::setGrades(const string type, const vector<double>grades)
+void Class::setGrades(const string type, const vector<Grade>grades)
 {
 	mGrades[type] = grades;
 }
