@@ -32,6 +32,14 @@ string Class::grades()const
 	}
 	return sout.str();
 }
+int Class::num_grades() const
+{
+	return mGrades.size();
+}
+int Class::num_weights()const
+{
+	return mWeights.size();
+} 
 double Class::average()const
 {
 	//Learn the algorithm to find class averages

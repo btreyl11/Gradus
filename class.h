@@ -18,6 +18,8 @@ class Class {
 		string grades() const;
 		double average() const;
 		string weights();
+		int num_grades() const;
+		int num_weights() const;
 		int weight(const string key);
 
 		void setName(const string name);
@@ -25,6 +27,7 @@ class Class {
 		void addWeight(const string type, const int weight);
 		void setWeight(const string type, const int weight);
 		void setGrades(const string type, const vector<Grade>grades);
+		
 
 
 };
