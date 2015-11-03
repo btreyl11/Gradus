@@ -6,6 +6,8 @@ using namespace std;
 
 Grade::Grade(): m_id(""),m_percent(0)
 {}
+Grade::Grade(string id, double percent): m_id(id),m_percent(percent)
+{}
 string Grade::id() const
 {
 	return m_id;

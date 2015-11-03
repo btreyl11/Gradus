@@ -8,6 +8,7 @@ class Grade
 		double m_percent;
 	public:
 		Grade();
+    Grade(string id, double percent);
 		
 		string id()const;
 		double percent()const;

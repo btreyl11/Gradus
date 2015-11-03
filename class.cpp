@@ -40,9 +40,10 @@ int Class::num_weights()const
 {
 	return mWeights.size();
 } 
-double Class::average()const
-{
-	//Learn the algorithm to find class averages
+double Class::average()
+{	
+  for(auto i: mGrades)
+    mAverage += gradeAve(i.second)*weight(i.first);
 	return mAverage;
 }
 string Class::weights()
@@ -52,7 +53,7 @@ string Class::weights()
 		sout<< it->first << it->second;
 	return sout.str();
 }
-int Class::weight(const string key)
+double Class::weight(const string key)
 {
 	return mWeights[key];
 }
@@ -78,4 +79,12 @@ void  Class::setWeight(const string type, const int weight){
 void Class::setGrades(const string type, const vector<Grade>grades)
 {
 	mGrades[type] = grades;
+}
+double Class::gradeAve(vector <Grade> a)
+{ 
+  double average = 0;
+  for(Grade i : a)
+    average += i.percent();
+  average = average/a.size();
+  return average;
 }

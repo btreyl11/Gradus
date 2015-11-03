@@ -4,8 +4,8 @@
 #include <map>
 #include <vector>
 
-#include "class.cpp"
-#include "grade.cpp"
+#include "class.h"
+#include "grade.h"
 
 using namespace std;
 
@@ -31,11 +31,11 @@ void error_message(char type);
 int main()
 {
 	
-	bool terminate = false;
+	bool done = false;
 	initGradus();
 	
 	cout<<"<GRADUS v1.0a>"<<endl;
-	while (!terminate){
+	while (!done){
 	//finish implementing stringstream to the command stream
 		cout<<"Normal-Mode$~ ";	
 		getline(cin, temps);
@@ -76,8 +76,8 @@ int main()
 		else if(lower_com(com1) == "goto"){
 			if(com2 == "-cm"||lower_com(com2)== "class" )
 				if(com3 != ""){
-					for(int i = 0; i < semester.size(); i++){
-						if(semester[i].name() == com3)
+					for(Class i : semester){
+						if(i.name() == com3)
 							class_mode(com3);
 					}
 				}
@@ -90,7 +90,7 @@ int main()
 		}
 		else if (lower_com(temps) == "quit")
 		{
-			terminate = true;
+			done = true;
 		}
 	}
 	updateGradus();	
@@ -241,8 +241,8 @@ void class_mode(const string c_name)
 		else if(lower_com(com1) == "goto"){
 			if(com2 == "-cm"||lower_com(com2)== "class" )
 				if(com3 != ""){
-					for(int i = 0; i < semester.size(); i++){
-						if(semester[i].name() == com3)
+					for(Class i: semester){
+						if(i.name() == com3)
 							class_mode(com3);
 					}
 				}
@@ -255,13 +255,13 @@ void class_mode(const string c_name)
 		}
 		else if (lower_com(temps) == "quit")
 		{
-			terminate = true;
+		 done	=  true;
 		}
 	}
 }
 string lower_com( string command)
 {
-	for(int i = 0; i < command.length(); ++i)
+	for(unsigned i = 0; i < command.length(); ++i)
 		command[i] = tolower(command[i]);
 	return command;
 }
